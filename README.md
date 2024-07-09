@@ -2,6 +2,25 @@
 
 This repository contains tests for the frontend of the [Relational Converter](https://dspace.cvut.cz/handle/10467/101022) project. The frontend has a separate codebase [here](https://github.com/tomashauser/relational-converter-frontend). These tests are written in Selenium using a [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) ideology.
 
+Serenity BDD is an open-source library that simplifies writing automated acceptance and regression tests. It introduces the Screenplay pattern, which focuses on describing tests in terms of the tasks and interactions performed by actors, making the tests more readable and maintainable. This approach helps in creating more modular and reusable test components. Serenity BDD also provides detailed and informative reports, aiding in better understanding and tracking of test outcomes and ensuring higher quality in the development process.
+
+This sample code demonstrates a test written using the Screenplay pattern in Serenity BDD. The test reads like a sentence, making it easy to understand and follow, which is a core principle of BDD.
+
+```Java
+@Test
+public void savedQueryButton_clickingOnTheSavedQueryButton_replacesTheTextInTheInput() {
+  givenThat(james).wasAbleTo(Open.browserOn(relationalConverterPage));
+
+  when(james).attemptsTo(EnterAQuery.of("π_{surname}(A) ⋈ B")
+    .then(SaveTheQuery.inTheTextInput())
+    .then(ClearTheInput.text())
+    .then(UseSavedQuery.number(1)));
+
+  then(james).should(seeThat(theInputText(), is(equalTo("π_{surname}(A) ⋈ B"))));
+}
+```
+
+
 # SUT
 ![Website screenshot](images/WebsiteScreenshot.PNG?raw=true "Title")
 
