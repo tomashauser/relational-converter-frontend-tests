@@ -1,6 +1,6 @@
 # Description
 
-This repository contains tests for the frontend of the [Relational API](https://dspace.cvut.cz/handle/10467/101022) project. The frontend has a separate codebase [here](https://github.com/tomashauser/relational-converter-frontend). These tests are written in Selenium using a [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) ideology.
+This repository contains tests for the frontend of the [Relational Converter](https://dspace.cvut.cz/handle/10467/101022) project. The frontend has a separate codebase [here](https://github.com/tomashauser/relational-converter-frontend). These tests are written in Selenium using a [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) ideology.
 
 # SUT
 ![Website screenshot](images/WebsiteScreenshot.PNG?raw=true "Title")
