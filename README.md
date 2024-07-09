@@ -1,9 +1,11 @@
-# SUT description
-For the SUT I chose a website from my [bachelor's thesis](https://dspace.cvut.cz/handle/10467/101022).
+# Description
 
+This repository contains tests for the frontend of the [Relational API](https://dspace.cvut.cz/handle/10467/101022) project. The frontend has a separate codebase [here](https://github.com/tomashauser/relational-converter-frontend). These tests are written in Selenium using a [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) ideology.
+
+# SUT
 ![Website screenshot](images/WebsiteScreenshot.PNG?raw=true "Title")
 
-Its purpose is to convert between two notations that are used to write queries in a formal query language called <strong>R</strong>elational <strong>A</strong>lgebra (RA). Furthermore, the application can take any valid RA query and convert it into another formal query language called <strong>T</strong>uple <strong>R</strong>elational <strong>C</strong>alculus (TRC).
+The purpose of the application is to convert between two notations that are used to write queries in a formal query language called <strong>R</strong>elational <strong>A</strong>lgebra (RA). Furthermore, the application can take any valid RA query and convert it into another formal query language called <strong>T</strong>uple <strong>R</strong>elational <strong>C</strong>alculus (TRC).
 
 # Testing Framework
 
