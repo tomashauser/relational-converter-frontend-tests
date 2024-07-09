@@ -1,0 +1,7 @@
+notation,schema,semantic_checking,formatting
+STANDARD,CORRECT,false,false
+SIMPLIFIED,CORRECT,true,true
+STANDARD,INCORRECT,true,false
+SIMPLIFIED,INCORRECT,false,true
+STANDARD,EMPTY,true,true
+SIMPLIFIED,EMPTY,false,false

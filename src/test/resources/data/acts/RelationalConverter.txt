@@ -1,0 +1,28 @@
+[System]
+-- specify system name
+Name: RelationalConverter
+
+[Parameter]
+-- general syntax is parameter_name : value1, value2, ...
+Notation (enum) : STANDARD, SIMPLIFIED
+Schema (enum) : CORRECT, INCORRECT, EMPTY
+Semantic_Checking_Enabled (boolean) : true, false
+Formatting_Enabled (boolean) : true, false
+
+[Relation]
+-- this section is optional
+-- general format Rx : (p1, p2, ..., pk, Strength)
+R1 : (Notation, Schema, 2)
+R2 : (Notation, Formatting_Enabled, 1)
+
+
+[Test Set]
+-- set existing test set for extend mode. this is also optional
+-- * represents don't-care value
+Notation,Schema,Semantic_Checking_Enabled,Formatting_Enabled
+SIMPLIFIED,CORRECT,false,false
+STANDARD,INCORRECT,true,true
+SIMPLIFIED,EMPTY,false,false
+STANDARD,CORRECT,true,false
+STANDARD,EMPTY,false,true
+SIMPLIFIED,INCORRECT,false,true
