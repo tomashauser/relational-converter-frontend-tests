@@ -1,9 +1,27 @@
 # Description
 
-This repository contains tests for the frontend of the [Relational Converter](https://dspace.cvut.cz/handle/10467/101022) project. The frontend has a separate codebase [here](https://github.com/tomashauser/relational-converter-frontend). These tests are written in Selenium using a [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) ideology.
+This repository contains tests for the frontend of the [Relational Converter](https://dspace.cvut.cz/handle/10467/101022) project. The frontend has a separate codebase [here](https://github.com/tomashauser/relational-converter-frontend). These tests are written in [Serenity BDD](https://serenity-bdd.info/). It is an open-source library that simplifies writing automated acceptance and regression tests. It introduces the Screenplay pattern, which focuses on describing tests in terms of the tasks and interactions performed by actors, making the tests more readable and maintainable. This approach helps in creating more modular and reusable test components. Serenity BDD also provides detailed and informative reports, aiding in better understanding and tracking of test outcomes and ensuring higher quality in the development process.
+
+This sample code demonstrates a test written using the Screenplay pattern in Serenity BDD. The test reads like a sentence, making it easy to understand and follow, which is a core principle of BDD.
+
+```Java
+@Test
+public void savedQueryButton_clickingOnTheSavedQueryButton_replacesTheTextInTheInput() {
+  givenThat(james).wasAbleTo(Open.browserOn(relationalConverterPage));
+
+  when(james).attemptsTo(EnterAQuery.of("π_{surname}(A) ⋈ B")
+    .then(SaveTheQuery.inTheTextInput())
+    .then(ClearTheInput.text())
+    .then(UseSavedQuery.number(1)));
+
+  then(james).should(seeThat(theInputText(), is(equalTo("π_{surname}(A) ⋈ B"))));
+}
+```
+
 
 # SUT
-![Website screenshot](images/WebsiteScreenshot.PNG?raw=true "Title")
+![image](https://github.com/tomashauser/relational-converter-frontend-tests/assets/37981481/b8a513b8-19c7-4bb1-a4d7-b3e6044a53ba)
+
 
 The purpose of the application is to convert between two notations that are used to write queries in a formal query language called <strong>R</strong>elational <strong>A</strong>lgebra (RA). Furthermore, the application can take any valid RA query and convert it into another formal query language called <strong>T</strong>uple <strong>R</strong>elational <strong>C</strong>alculus (TRC).
 
@@ -15,7 +33,10 @@ Selenium, Serenity BDD and JUnit5 were chosen. The plugin is set up in such a wa
 
 My goal was to verify the correctness of every functionality depicted in the use case diagram. After all, the diagram shows every possible action user can take in the application.
 
-![Use case diagram](images/UseCaseDiagram.jpg?raw=true "Title")
+<div align="center">
+  <img src="images/UseCaseDiagram.jpg" alt="Deployment diagram" width="80%">
+</div>
+
 
 Each use case was unit tested and some had additional coverage which is discussed in the following sections
 
@@ -28,7 +49,9 @@ The following diagram shows a conversion from the activity diagram into a corres
 
 A decision graph for the conversion into TRC was made in a similar fashion.
 
-![Decision graph for a test for a conversion from RA into TRC](images/ToTRCConversionGraph.PNG?raw=true "Title")
+<div align="center">
+  <img src="images/ToTRCConversionGraph.PNG" height="70%" />
+</div>
 
 Tests for both diagrams are located in `src/test/java/tests/integration/pathbased`.
 
@@ -61,7 +84,9 @@ As the application does not have any clear input field for which a discussion ab
 
 Let *IdentifierRegex := [a-zA-Z][a-zA-Z0-9_-]\**. The regex used for table declarations is then defined by 
 
-*^|(^${identifierRegex}\\(${identifierRegex}(,${identifierRegex})*\\)$)*.
+```Regex
+^|(^${identifierRegex}\\(${identifierRegex}(,${identifierRegex})*\\)$)
+```
 
 The equivalence classes are
 
